@@ -1,17 +1,11 @@
-name: Cypress Tests
-
+name: Chrome headed
 on: [push]
-
 jobs:
   cypress-run:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v5 # use the explicit version number
+      - uses: actions/checkout@v3
+      - uses: cypress-io/github-action@v5
         with:
-          build: npm run build
-          start: npm start
+          browser: chrome
+          headed: true
