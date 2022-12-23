@@ -1,14 +1,19 @@
-name: run-on-docker
-on:
-  # Triggers the workflow on push or pull request events but only for the develop branch
-  push:
-    branches: main
+name: Cypress Tests using Cypress Docker Image
+
+on: [push]
+
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-    # Docker image with Cypress pre-installed
-    # https://github.com/cypress-io/cypress-docker-images/tree/master/included
-    container: cypress/included:9.2.0
+    container: cypress/browsers:node12.18.3-chrome87-ff82
     steps:
-      - uses: actions/checkout@v1
-      - run: cd "Part 09" && npm install && npm run cy:test:qa
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v5 # use the explicit version number
+        with:
+          # Specify Browser since container image is compile with Firefox
+          browser: firefox
