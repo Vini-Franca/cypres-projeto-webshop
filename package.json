@@ -6,7 +6,7 @@
   "scripts": {
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test:e2e": "start-server-and-test start http://localhost:3000 cypress:run"
   },
   "repository": {
     "type": "git",
