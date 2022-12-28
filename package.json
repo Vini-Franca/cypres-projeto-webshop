@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/Vini-Franca/cypres-projeto-webshop/issues"
   },
-  "homepage": "https://github.com/Vini-Franca/cypres-projeto-webshop#readme"
+  "homepage": "https://github.com/Vini-Franca/cypres-projeto-webshop#readme",
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0"
+  }
 }

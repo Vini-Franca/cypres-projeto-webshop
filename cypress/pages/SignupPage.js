@@ -5,13 +5,13 @@ class SignupPage {
       cy.get("a[class='ico-register']").click();
     }
   
-    filform(signup_data) {
+    filform(client_data) {
       cy.get('input[id="gender-female"]').click();
-      cy.get('input[id="FirstName"]').type(signup_data.first_name);
-      cy.get('input[id="LastName"]').type(signup_data.last_name);
-      cy.get('input[id="Email"]').type(signup_data.email);
-      cy.get('input[id="Password"]').type(signup_data.password);
-      cy.get('input[id="ConfirmPassword"]').type(signup_data.confirm_password);
+      cy.get('input[id="FirstName"]').type(client_data.first_name);
+      cy.get('input[id="LastName"]').type(client_data.last_name);
+      cy.get('input[id="Email"]').type(client_data.email);
+      cy.get('input[id="Password"]').type(client_data.password);
+      cy.get('input[id="ConfirmPassword"]').type(client_data.confirm_password);
     }
   
     submit() {
@@ -22,10 +22,10 @@ class SignupPage {
       cy.contains(expectedMessage);
     }
 
-    login(signup_data) {
+    login(client_data) {
         cy.get("a[class='ico-login']").click();
-        cy.get('input[id="Email"]').type(signup_data.email);
-        cy.get('input[id="Password"]').type(signup_data.password);
+        cy.get('input[id="Email"]').type(client_data.email);
+        cy.get('input[id="Password"]').type(client_data.password);
         cy.get("input[class='button-1 login-button']").click();
       }
 

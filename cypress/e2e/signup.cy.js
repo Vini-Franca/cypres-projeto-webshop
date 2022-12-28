@@ -2,22 +2,22 @@ import signup from "../pages/SignupPage";
 import SignupFactory from "../factories/SignupFactory";
 
 describe('Signup', function () {
-    it('Realizar Cadastro', function () {
-        var signup_data = SignupFactory.signup_data();
+    it.skip('Realizar Cadastro', function () {
+        var client_data = SignupFactory.client_data();
         const expectedMessage = 'Your registration completed';  
 
         signup.go();
-        signup.filform(signup_data);
+        signup.filform(client_data);
         signup.submit();
         signup.alertMessageRegistration(expectedMessage)
     })
 
-    it('Realizar login com nova credencial', function () {
-        var signup_data = SignupFactory.signup_data();
-        const expectedEmail = signup_data.email;  
+    it('Realizar login com novas credenciais', function () {
+        var client_data = SignupFactory.client_data();
+        const expectedEmail = client_data.email;  
 
         signup.go();
-        signup.login(signup_data);
+        signup.login(client_data);
         signup.loginValidation(expectedEmail) 
     })
 })

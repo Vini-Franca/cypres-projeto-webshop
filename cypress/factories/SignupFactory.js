@@ -1,5 +1,5 @@
 export default {
-  signup_data: function () {
+  client_data: function () {
     var data = {
       first_name: "Angela",
       last_name: "Davis",
