@@ -1,16 +1,30 @@
-name: Cypress Tests
-on:
-  push:
-    branches:
-      - main
+name: integrations tests
+on: [push]
 jobs:
-  cypress-run:
+
+  smoke:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Cypress run
+      - name: Setup node 16.13.2
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.13.2
+      - name: Cypress integration tests
         uses: cypress-io/github-action@v4.1.0
         with:
-          build: npm i -D cypress
-          start: npm start
+          start: npm run build:serve
+          wait-on: 'http://localhost:9000'
+          wait-on-timeout: 500 # seconds = 6 mins
+          config: 'baseUrl=http://localhost:9000'
+
+  validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup node 16.13.2
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.13.2
