@@ -1,24 +1,14 @@
-name: E2E in custom container
+name: Cypress Tests
 on: [push]
 jobs:
-  end-to-end-tests:
-    name: End-to-End tests (web)
-    runs-on: ubuntu-latest
-    if: github.event.pull_request.draft == false
-    steps:
-      ## Start Shared Setup
-      - name: checkout gather
-        uses: actions/checkout@v2
-
-      - name: setup node
-        uses: actions/setup-node@v2-beta
-        with:
-          node-version: 12.18.3
-
-      - uses: bahmutov/npm-install@HEAD
-      ## End Shared Setup
-
-      - name: cypress in chrome
-        uses: cypress-io/github-action@v1
-        with:
-          browser: chrome
+ Cypress-Test:
+   runs-on: ubuntu-latest
+   steps:
+     - name: Checkout GitCode
+       uses: actions/checkout@v2
+ 
+     - name: Run Cypress Test
+       uses: cypress-io/github-action@v4
+       with:
+         command: npx cypress run
+         browser: chrome
