@@ -1,13 +1,24 @@
 name: E2E in custom container
 on: [push]
 jobs:
-  cypress-run:
-    runs-on: ubuntu-20.04
-    # Cypress Docker image with Chrome v78
-    # and Firefox v70 pre-installed
-    container: cypress/browsers:node12.13.0-chrome78-ff70
+  end-to-end-tests:
+    name: End-to-End tests (web)
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
     steps:
-      - uses: actions/checkout@v3
-      - uses: cypress-io/github-action@v5
+      ## Start Shared Setup
+      - name: checkout gather
+        uses: actions/checkout@v2
+
+      - name: setup node
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 12.18.3
+
+      - uses: bahmutov/npm-install@HEAD
+      ## End Shared Setup
+
+      - name: cypress in chrome
+        uses: cypress-io/github-action@v1
         with:
           browser: chrome
