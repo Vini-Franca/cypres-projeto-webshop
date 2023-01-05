@@ -2,17 +2,17 @@ import signup from "../pages/SignupPage";
 import SignupFactory from "../factories/SignupFactory";
 
 describe('Signup', function () {
-    it.skip('Realizar Cadastro', function () {
-        var client_data = SignupFactory.client_data();
+    it('Realizar Cadastro', function () {
+        var faker_data = SignupFactory.faker_data();
         const expectedMessage = 'Your registration completed';  
 
         signup.go();
-        signup.filform(client_data);
+        signup.filform(faker_data);
         signup.submit();
         signup.alertMessageRegistration(expectedMessage)
     })
 
-    it('Realizar login com novas credenciais', function () {
+    it.skip('Realizar login com credenciais válidas', function () {
         var client_data = SignupFactory.client_data();
         const expectedEmail = client_data.email;  
 

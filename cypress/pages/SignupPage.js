@@ -5,13 +5,13 @@ class SignupPage {
       cy.get("a[class='ico-register']").click();
     }
   
-    filform(client_data) {
+    filform(faker_data) {
       cy.get('input[id="gender-female"]').click();
-      cy.get('input[id="FirstName"]').type(client_data.first_name);
-      cy.get('input[id="LastName"]').type(client_data.last_name);
-      cy.get('input[id="Email"]').type(client_data.email);
-      cy.get('input[id="Password"]').type(client_data.password);
-      cy.get('input[id="ConfirmPassword"]').type(client_data.confirm_password);
+      cy.get('input[id="FirstName"]').type(faker_data.first_name);
+      cy.get('input[id="LastName"]').type(faker_data.last_name);
+      cy.get('input[id="Email"]').type(faker_data.email);
+      cy.get('input[id="Password"]').type(faker_data.password);
+      cy.get('input[id="ConfirmPassword"]').type(faker_data.confirm_password);
     }
   
     submit() {
