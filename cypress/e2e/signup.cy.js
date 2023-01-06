@@ -12,7 +12,7 @@ describe('Signup', function () {
         signup.alertMessageRegistration(expectedMessage)
     })
 
-    it.skip('Realizar login com credenciais válidas', function () {
+    it('Realizar login com credenciais válidas', function () {
         var client_data = SignupFactory.client_data();
         const expectedEmail = client_data.email;  
 
